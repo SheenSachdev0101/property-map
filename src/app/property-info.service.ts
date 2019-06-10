@@ -15,12 +15,13 @@ export class PropertyInfoService {
 
   markers: MarkerInfo[] = [];
 
+  //Dummy display data 
   DATA = [{
     fullAddress: '210 N JUSTINE ST, CHICAGO, IL',
     latitude: '-87.6656354999999',
     longitude: '41.8857718',
     zip: '60607',
-    estimatedMarketValue: 6,
+    estimatedMarketValue: 595820,
     resType: 'Two Story'
   },
   {
@@ -28,7 +29,7 @@ export class PropertyInfoService {
     latitude: '-87.6654183999999',
     longitude: '41.8690533999999',
     zip: '60607',
-    estimatedMarketValue: 10,
+    estimatedMarketValue: 1302750,
     resType: 'Three Story'
   },
   {
@@ -36,7 +37,7 @@ export class PropertyInfoService {
     latitude: '-87.6744779999999',
     longitude: '41.8556463999999',
     zip: '60608',
-    estimatedMarketValue: 12,
+    estimatedMarketValue: 401760,
     resType: 'Two Story'
   }]
 
