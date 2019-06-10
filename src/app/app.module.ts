@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/Forms';
 
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
-import { FileUploadComponent } from './file-upload/file-upload.component';
 import { PropertyInfoService } from './property-info.service';
 import { PropertyFilterComponent } from './property-filter/property-filter.component';
 
@@ -12,7 +11,6 @@ import { PropertyFilterComponent } from './property-filter/property-filter.compo
   declarations: [
     AppComponent,
     MapComponent,
-    FileUploadComponent,
     PropertyFilterComponent
   ],
   imports: [

@@ -2,5 +2,7 @@ export interface MarkerInfo {
     fullAddress: string,
     latitude: string,
     longitude: string,
-    estimatedMarketValue: number
+    zip: string,
+    classDescription: string,
+    estimatedMarketValue: string
 }
