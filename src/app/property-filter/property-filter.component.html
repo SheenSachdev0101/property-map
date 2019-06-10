@@ -1,0 +1,18 @@
+
+<div class="container" id="app">
+  <h1>Filter Properties:</h1>
+  <form (ngSubmit)="applyFilter(propForm)" #propForm="ngForm">
+    <div class="form-group">
+      <select id="restype" (change)="filterChanged($event.target.value)" ngModel name="resType" #resType="ngModel"> 
+      <option *ngFor="let record of resTypes" value= {{record}} >
+      {{record}}
+      </option>
+      </select>
+      <label for="minValue">Min Value</label>
+      <input type="text" class="form-control" value="595820" ngModel name="minValue" #minValue="ngModel">
+      <label for="maxValue">Max Value</label>
+      <input type="text" class="form-control" value="595820" ngModel name="maxValue" #maxValue="ngModel">
+      <button  type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </form>
+</div>
