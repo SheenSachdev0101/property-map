@@ -17,28 +17,36 @@ export class PropertyInfoService {
 
   //Dummy display data 
   DATA = [{
-    fullAddress: '210 N JUSTINE ST, CHICAGO, IL',
-    latitude: '-87.6656354999999',
-    longitude: '41.8857718',
-    zip: '60607',
-    estimatedMarketValue: 595820,
-    resType: 'Two Story'
+    fullAddress: '2229 W HURON ST, CHICAGO, IL',
+    latitude: '-87.6830293999999',
+    longitude: '41.8938058999999',
+    zip: '60612',
+    estimatedMarketValue: 379420,
+    resType: 'Two to Six Apartments, Over 62 Years'
   },
   {
-    fullAddress: '1529 W TAYLOR ST, CHICAGO, IL',
-    latitude: '-87.6654183999999',
-    longitude: '41.8690533999999',
-    zip: '60607',
-    estimatedMarketValue: 1302750,
-    resType: 'Three Story'
+    fullAddress: '328 S WESTERN AVE, CHICAGO, IL',
+    latitude: '-87.6866284',
+    longitude: '41.8765324',
+    zip: '60612',
+    estimatedMarketValue: 379420,
+    resType: 'Apartment buildings over three stories'
   },
   {
-    fullAddress: '1903 W 19TH ST, CHICAGO, IL',
-    latitude: '-87.6744779999999',
-    longitude: '41.8556463999999',
-    zip: '60608',
-    estimatedMarketValue: 401760,
-    resType: 'Two Story'
+    fullAddress: '1001 N WESTERN AVE, CHICAGO, IL',
+    latitude: '-87.686592',
+    longitude: '41.8995097999999',
+    zip: '60622',
+    estimatedMarketValue: 575060,
+    resType: 'Special residential improvements'
+  },
+  {
+    fullAddress: '2032 W OHIO ST, CHICAGO, IL',
+    latitude: '-87.6783669',
+    longitude: '41.8924312999999',
+    zip: '60612',
+    estimatedMarketValue: 834640,
+    resType: 'Two to Six Apartments, Over 62 Years'
   }]
 
   private markerSubject = new BehaviorSubject([]);

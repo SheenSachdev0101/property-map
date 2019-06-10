@@ -1,18 +1,34 @@
-
 <div class="container" id="app">
-  <h1>Filter Properties:</h1>
-  <form (ngSubmit)="applyFilter(propForm)" #propForm="ngForm">
-    <div class="form-group">
-      <select id="restype" (change)="filterChanged($event.target.value)" ngModel name="resType" #resType="ngModel"> 
-      <option *ngFor="let record of resTypes" value= {{record}} >
-      {{record}}
-      </option>
-      </select>
-      <label for="minValue">Min Value</label>
-      <input type="text" class="form-control" value="595820" ngModel name="minValue" #minValue="ngModel">
-      <label for="maxValue">Max Value</label>
-      <input type="text" class="form-control" value="595820" ngModel name="maxValue" #maxValue="ngModel">
-      <button  type="submit" class="btn btn-success">Submit</button>
-      </div>
+    <div class="row">
+    </div>
+  <div class="row top-buffer">
+    <form (ngSubmit)="applyFilter(propForm)" #propForm="ngForm">
+      <div class="col-sm-3">
+          <div class=form-group>
+            <label for="resType" class="sansserif">Class Description:</label>
+            <select class="form-control" id="restype" (change)="filterChanged($event.target.value)" ngModel name="resType" #resType="ngModel"> 
+                <option value="">Please select category</option>
+                <option *ngFor="let record of resTypes" value= {{record}}>
+                {{record}}
+                </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-3">
+            <div class=form-group>
+              <label for="minValue" class="sansserif">Min Value:</label>
+              <input class="form-control" type="text" value="595820" ngModel name="minValue" #minValue="ngModel">
+           </div>
+        </div>
+        <div class="col-sm-3">
+          <div class=form-group>
+              <label for="maxValue" class="sansserif">Max Value:</label>
+              <input class="form-control" type="text" value="595820" ngModel name="maxValue" #maxValue="ngModel">
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <button type="submit" class="form-control btn btn-primary top-buffer">Submit</button>
+        </div>
     </form>
+  </div>
 </div>

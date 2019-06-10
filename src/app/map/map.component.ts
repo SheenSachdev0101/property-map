@@ -25,11 +25,8 @@ export class MapComponent {
   ngOnInit() {
     var mapProp = {
       center: new google.maps.LatLng(-87.6656354999999, 41.8857718),
-      zoom: 5,
-      // mapTypeId: google.maps.MapTypeId.ROADMAP
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-      // mapTypeId: google.maps.MapTypeId.SATELLITE
-      // mapTypeId: google.maps.MapTypeId.TERRAIN
+      zoom: 8,
+      mapTypeId: google.maps.MapTypeId.TERRAIN
     };
   
     this.map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
@@ -60,14 +57,18 @@ export class MapComponent {
         mapMarker.setMap(this.map);
         let estimatedMarketValue = Number(marker.estimatedMarketValue)
         if((estimatedMarketValue))
-        //show the location full address in info window
         var infowindow = new google.maps.InfoWindow({
           content: marker.fullAddress
         });
-        infowindow.open(this.map, mapMarker);
+        //show the location full address in info window on hover
+        google.maps.event.addListener(mapMarker, 'mouseover', function() {
+          console.log(mapMarker);
+          infowindow.open(this.map, mapMarker);
+        });
+        google.maps.event.addListener(mapMarker, 'mouseout', function() {
+          infowindow.close();
+        });
       })
-      
-      console.log()
       console.log(data);
     });
     

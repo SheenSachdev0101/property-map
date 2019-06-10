@@ -19,17 +19,16 @@ export class PropertyFilterComponent implements OnInit {
     console.log('value is'+selectedValue);
 
   } 
-
-  submitted = false;
-
-  applyFilter(f: NgForm) {
+  
+  // This function is used to display the values after applying the property filter based on category,
+  // min and max value of estimated market value
+  applyFilter(form: NgForm) {
     let markers = [];
-    this.submitted = true;
-    console.log(f.value.resType); //{resType: "Three Story", estValue1: "66"}
+    console.log(form.value.resType); //{resType: "Three Story", estValue1: "66"}
     _.forEach(this.propertyInfoService.DATA, elm => {
-      let matchesResType = f.value.resType == '' || f.value.resType === elm.resType;
-      let matchesMinValue = f.value.minValue == '' || elm.estimatedMarketValue > f.value.minValue;
-      let matchesMaxValue = f.value.maxValue == '' || elm.estimatedMarketValue < f.value.maxValue;
+      let matchesResType = form.value.resType == '' || form.value.resType === elm.resType;
+      let matchesMinValue = form.value.minValue == '' || elm.estimatedMarketValue > form.value.minValue;
+      let matchesMaxValue = form.value.maxValue == '' || elm.estimatedMarketValue < form.value.maxValue;
       if (matchesResType && matchesMinValue && matchesMaxValue) {
         let marker: MarkerInfo = {    
           fullAddress: elm.fullAddress,
