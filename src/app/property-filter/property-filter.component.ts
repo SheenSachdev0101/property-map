@@ -14,22 +14,17 @@ import * as _ from 'lodash';
 export class PropertyFilterComponent implements OnInit {
   resTypes: any[] = [];
   constructor(private propertyInfoService: PropertyInfoService) { }
-
-  filterChanged(selectedValue: String){
-    console.log('value is'+selectedValue);
-
-  } 
   
   // This function is used to display the values after applying the property filter based on category,
   // min and max value of estimated market value
   applyFilter(form: NgForm) {
     let markers = [];
-    console.log(form.value.resType); //{resType: "Three Story", estValue1: "66"}
     _.forEach(this.propertyInfoService.DATA, elm => {
       let matchesResType = form.value.resType == '' || form.value.resType.trim() === elm.classDescription.trim();
+      let matchesZip = form.value.zip == '' || form.value.zip.trim() === elm.zip.trim();
       let matchesMinValue = form.value.minValue == '' || Number(elm.estimatedMarketValue) > Number(form.value.minValue);
       let matchesMaxValue = form.value.maxValue == '' || Number(elm.estimatedMarketValue) < Number(form.value.maxValue);
-      if (matchesResType && matchesMinValue && matchesMaxValue) {
+      if (matchesResType && matchesMinValue && matchesMaxValue && matchesZip) {
         let marker: MarkerInfo = {    
           fullAddress: elm.fullAddress,
           latitude: elm.latitude,
@@ -49,7 +44,7 @@ export class PropertyFilterComponent implements OnInit {
   ngOnInit() {
     let masterData = this.propertyInfoService.DATA;
     this.resTypes = Array.from(new Set(masterData.map((itemInArray) => itemInArray.classDescription.trim())));
-    console.log(this.resTypes);
+   //console.log(this.resTypes);//DEBUG ONLY 
   }
 
 

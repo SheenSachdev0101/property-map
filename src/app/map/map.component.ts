@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as googleMaps from '@google/maps';
-//import { } from '@types/googlemaps';
 import { MarkerInfo } from '../shared/model/marker-info';
 import { PropertyInfoService } from '../property-info.service';
 import * as _ from 'lodash';
@@ -56,10 +55,8 @@ export class MapComponent {
         let mapMarker = new google.maps.Marker({ position: latlng, icon: iconStr});
         this.mapMarkers.push(mapMarker);
         mapMarker.setMap(this.map);
-        //let estimatedMarketValue = Number(marker.estimatedMarketValue)
-       // if((estimatedMarketValue))
         var infowindow = new google.maps.InfoWindow({
-          content: marker.estimatedMarketValue
+          content: marker.fullAddress
         });
         //show the location full address in info window on hover
         google.maps.event.addListener(mapMarker, 'mouseover', function() {
@@ -70,7 +67,7 @@ export class MapComponent {
           infowindow.close();
         });
       })
-      console.log(data);
+      //console.log(data);
     });
     
   }
@@ -83,23 +80,4 @@ export class MapComponent {
     }
     this.mapMarkers = [];
   }
-
-  
-
-  // ngOnInit() {
-  //   let mapProp = {
-  //       center: new google.maps.LatLng(28.4595, 77.0266),
-  //       zoom: 5,
-  //       mapTypeId: google.maps.MapTypeId.ROADMAP
-  //   };
-  //   let map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-  //   var marker = new google.maps.Marker({ position: mapProp.center });
-  //   marker.setMap(this.map);
-    
-  //   var infowindow = new google.maps.InfoWindow({
-  //     content: 'Hi here'
-  //   });
-  //   infowindow.open(this.map, marker);
-  // }
-
 }

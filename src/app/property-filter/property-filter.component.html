@@ -14,13 +14,19 @@
             </select>
           </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
+            <div class=form-group>
+              <label for="zip" class="sansserif">Zip</label>
+              <input class="form-control" type="text" value="" ngModel name="zip" #zip="ngModel">
+           </div>
+        </div>
+        <div class="col-sm-2">
             <div class=form-group>
               <label for="minValue" class="sansserif">Min Value:</label>
               <input class="form-control" type="text" value="595820" ngModel name="minValue" #minValue="ngModel">
            </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class=form-group>
               <label for="maxValue" class="sansserif">Max Value:</label>
               <input class="form-control" type="text" value="595820" ngModel name="maxValue" #maxValue="ngModel">

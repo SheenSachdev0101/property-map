@@ -61,7 +61,7 @@ export class PropertyInfoService {
       this.colorMap[elm] = this.rgbToHex(this.setColor(elm));
 
     })
-    console.log(this.colorMap);
+    //console.log(this.colorMap);//DEBUG ONLY
   }
 
   componentToHex(c) {
