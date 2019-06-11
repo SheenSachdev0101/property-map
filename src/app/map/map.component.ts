@@ -51,14 +51,15 @@ export class MapComponent {
         } else {
           color = 'FFFF00';
         }
+        color = this.propertyInfoService.colorMap[marker.estimatedMarketValue];
         let iconStr = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + color;
         let mapMarker = new google.maps.Marker({ position: latlng, icon: iconStr});
         this.mapMarkers.push(mapMarker);
         mapMarker.setMap(this.map);
-        let estimatedMarketValue = Number(marker.estimatedMarketValue)
+        //let estimatedMarketValue = Number(marker.estimatedMarketValue)
        // if((estimatedMarketValue))
         var infowindow = new google.maps.InfoWindow({
-          content: marker.fullAddress
+          content: marker.estimatedMarketValue
         });
         //show the location full address in info window on hover
         google.maps.event.addListener(mapMarker, 'mouseover', function() {
@@ -83,6 +84,7 @@ export class MapComponent {
     this.mapMarkers = [];
   }
 
+  
 
   // ngOnInit() {
   //   let mapProp = {

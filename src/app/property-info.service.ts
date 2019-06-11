@@ -13,6 +13,7 @@ export class PropertyInfoService {
   file: File;
   minEstimatedValue: string;
   maxEstimatedValue: string;
+  colorMap = {};
 
   markers: MarkerInfo[] = [];
 
@@ -52,8 +53,35 @@ export class PropertyInfoService {
     let estimatedValueArr = Array.from(new Set(this.DATA.map((itemInArray) => Number(itemInArray.estimatedMarketValue))));
     this.maxEstimatedValue = Math.max(...estimatedValueArr).toString(); //used spread operator to combine Array
     this.minEstimatedValue = Math.min(...estimatedValueArr).toString(); //used spread operator to combine Array
-    // _.forEach(this.DATA, elm => {
-    //   if(elm.estimatedMarketValue > this.minEstimatedValue){}
-    //   });
+    estimatedValueArr.sort((a,b) => {
+      return a-b;
+    });
+    let color = {r:0,g:255,b:0};
+    _.forEach(estimatedValueArr, elm => {
+      this.colorMap[elm] = this.rgbToHex(this.setColor(elm));
+
+    })
+    console.log(this.colorMap);
+  }
+
+  componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+  }
+  
+  rgbToHex(color) {
+    return this.componentToHex(color.r) + this.componentToHex(color.g) + this.componentToHex(color.b);
+  }
+
+  setColor(value) {
+    let greenValue = (value-Number(this.minEstimatedValue))/(Number(this.maxEstimatedValue)-Number(this.minEstimatedValue));
+    greenValue = Math.round(greenValue * 255);
+    let redValue = 255 - greenValue;
+    return {
+      r:redValue,
+      g:greenValue,
+      b:0
+    };
+    
   }
 } 
