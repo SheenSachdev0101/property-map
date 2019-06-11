@@ -56,7 +56,7 @@ export class MapComponent {
         this.mapMarkers.push(mapMarker);
         mapMarker.setMap(this.map);
         let estimatedMarketValue = Number(marker.estimatedMarketValue)
-        if((estimatedMarketValue))
+       // if((estimatedMarketValue))
         var infowindow = new google.maps.InfoWindow({
           content: marker.fullAddress
         });

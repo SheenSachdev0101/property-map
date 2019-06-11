@@ -11,8 +11,8 @@ import { PROPERTIES } from '../app/shared/constants/property-info'
 export class PropertyInfoService {
   arrayBuffer: any;
   file: File;
-  minEstimatedValue: number;
-  maxEstimatedValue: number;
+  minEstimatedValue: string;
+  maxEstimatedValue: string;
 
   markers: MarkerInfo[] = [];
 
@@ -50,8 +50,8 @@ export class PropertyInfoService {
 
   initializeMarkerColorData(){  
     let estimatedValueArr = Array.from(new Set(this.DATA.map((itemInArray) => Number(itemInArray.estimatedMarketValue))));
-    this.minEstimatedValue = Math.max(...estimatedValueArr); //used spread operator to combine Array
-    this.maxEstimatedValue = Math.min(...estimatedValueArr); //used spread operator to combine Array
+    this.maxEstimatedValue = Math.max(...estimatedValueArr).toString(); //used spread operator to combine Array
+    this.minEstimatedValue = Math.min(...estimatedValueArr).toString(); //used spread operator to combine Array
     // _.forEach(this.DATA, elm => {
     //   if(elm.estimatedMarketValue > this.minEstimatedValue){}
     //   });

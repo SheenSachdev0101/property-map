@@ -26,14 +26,16 @@ export class PropertyFilterComponent implements OnInit {
     let markers = [];
     console.log(form.value.resType); //{resType: "Three Story", estValue1: "66"}
     _.forEach(this.propertyInfoService.DATA, elm => {
-      let matchesResType = form.value.resType == '' || form.value.resType === elm.resType;
-      let matchesMinValue = form.value.minValue == '' || elm.estimatedMarketValue > form.value.minValue;
-      let matchesMaxValue = form.value.maxValue == '' || elm.estimatedMarketValue < form.value.maxValue;
+      let matchesResType = form.value.resType == '' || form.value.resType.trim() === elm.classDescription.trim();
+      let matchesMinValue = form.value.minValue == '' || Number(elm.estimatedMarketValue) > Number(form.value.minValue);
+      let matchesMaxValue = form.value.maxValue == '' || Number(elm.estimatedMarketValue) < Number(form.value.maxValue);
       if (matchesResType && matchesMinValue && matchesMaxValue) {
         let marker: MarkerInfo = {    
           fullAddress: elm.fullAddress,
           latitude: elm.latitude,
           longitude: elm.longitude,
+          zip: elm.zip,
+          classDescription: elm.classDescription,
           estimatedMarketValue: elm.estimatedMarketValue
         }
         markers.push(marker);
@@ -46,7 +48,7 @@ export class PropertyFilterComponent implements OnInit {
 
   ngOnInit() {
     let masterData = this.propertyInfoService.DATA;
-    this.resTypes = Array.from(new Set(masterData.map((itemInArray) => itemInArray.resType)));
+    this.resTypes = Array.from(new Set(masterData.map((itemInArray) => itemInArray.classDescription.trim())));
     console.log(this.resTypes);
   }
 
